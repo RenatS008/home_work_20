@@ -6,11 +6,11 @@ from application.dao.model.genre import Genre
 
 
 @pytest.fixture(autouse=True)
-def d_dao():
+def g_dao():
     genre_dao = GenreDAO(None)
 
-    genre1 = Genre(id=1, name="testgenre_1")
-    genre2 = Genre(id=2, name="testgenre_2")
+    genre1 = Genre(id=1, name="genre_1")
+    genre2 = Genre(id=2, name="genre_2")
 
     genre_dao.get_all = MagicMock(return_value=[genre1, genre2])
     genre_dao.get_by_id = MagicMock(return_value=genre1)

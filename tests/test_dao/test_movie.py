@@ -6,7 +6,7 @@ from application.dao.movie_dao import MovieDAO
 
 
 @pytest.fixture(autouse=True)
-def d_dao():
+def m_dao():
     movie_dao = MovieDAO(None)
 
     movie1 = Movie(id=1,

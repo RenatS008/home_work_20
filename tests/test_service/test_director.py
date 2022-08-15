@@ -1,23 +1,24 @@
 import pytest
 
 from application.service.director import DirectorService
+from tests.test_dao.test_director import d_dao
 
 
 class TestDirectorService:
     @pytest.fixture(autouse=True)
-    def __init__(self, director_dao):
-        self.director_service = DirectorService(director_dao)
+    def director_service(self, d_dao):
+        self.director_service = DirectorService(d_dao)
 
     def test_get_all(self):
         assert len(self.director_service.get_all()) == 2
 
     def test_get_by_id(self):
         assert self.director_service.get_by_id(1) is not None
-        assert self.director_service.get_by_id(1).name == 'testname_1'
+        assert self.director_service.get_by_id(1).name == 'name_1'
 
     def test_create(self):
         data = {
-            "name": "testname_2"
+            "name": "name_1"
         }
 
         assert self.director_service.create(data).name == data.get("name")
